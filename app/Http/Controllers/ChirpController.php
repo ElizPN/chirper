@@ -12,7 +12,10 @@ class ChirpController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
      */
+// The index method  is responsible for retrieving a list of chirps 
+// from the database and rendering them to the Chirps/Index 
      public function index(): Response 
     {
         return Inertia::render('Chirps/Index', [
@@ -32,6 +35,9 @@ class ChirpController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // we creates a new chirp object, 
+    // sets its properties based on the validated user input, 
+    // and saves it to the database, linking it to the current user.
     public function store(Request $request): RedirectResponse
     {
          $validated = $request->validate([
