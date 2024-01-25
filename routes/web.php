@@ -30,12 +30,13 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// create chirps.index and chirps.store routes.  
+// create chirps.index, chirps.store , chirps.update and chirps.destroy routes
 // get request to chirps.index 
 // post request to chirps.store
 // PUT/PATCH	request to chirps.update
+// DeLETE request to chirps.destroy
 Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'store', 'update'])
+    ->only(['index', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
