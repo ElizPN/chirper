@@ -89,10 +89,16 @@ class ChirpController extends Controller
      */
     public function destroy(Chirp $chirp): RedirectResponse
     {
+        // This line checks if the currently logged-in user has the delete permission for the specified chirp $chirp. 
+        // This ensures that only authorized users can delete chirps.
         $this->authorize('delete', $chirp);
  
+        // delete comments from DB
         $chirp->delete();
  
+        //redirects the user to the chirps index page (route('chirps.index')) 
+        // after successfully deleting the chirp. 
+        // This allows the user to see the updated list of chirps.
         return redirect(route('chirps.index'));
     }
 }
