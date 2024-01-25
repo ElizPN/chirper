@@ -45,7 +45,9 @@ class ChirpPolicy
      */
     public function delete(User $user, Chirp $chirp): bool
     {
-        //
+   //the delete() method simply delegates to the update() method the the authorization logic. 
+   // Because it is the same like during updating a chirp.
+        return $this->update($user, $chirp);
     }
 
     /**
