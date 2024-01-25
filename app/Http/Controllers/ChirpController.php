@@ -70,6 +70,9 @@ class ChirpController extends Controller
      */
     public function update(Request $request, Chirp $chirp): RedirectResponse
     {
+        // Laravel looks for a ChirpPolicy class and its update() method.
+        // If a matching policy class and method exist, Laravel invokes the policy method, 
+        // passing the current user object and the chirp object as arguments.
         $this->authorize('update', $chirp);
  
         $validated = $request->validate([
